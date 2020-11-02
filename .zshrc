@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias nvim = "vim"
 alias please="sudo"
 alias python="python3"
 alias kns="kubens"

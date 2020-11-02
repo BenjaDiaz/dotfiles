@@ -44,6 +44,10 @@ Plug 'hashivim/vim-terraform'
 
 Plug 'juliosueiras/vim-terraform-completion'
 
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'fisadev/vim-isort'
+
 call plug#end()
 
 let mapleader = "\<Space>"
@@ -80,7 +84,7 @@ let g:neoformat_basic_format_trim = 1
 let g:jedi#completions_enabled = 0
 
 " open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+" let g:jedi#use_splits_not_buffers = "right"
 
 " gruvbox
 
@@ -91,4 +95,10 @@ colorscheme gruvbox
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-noremap <F3> :NERDTreeToggle<CR>
+noremap <Leader>ft :NERDTreeToggle<CR>
+
+" neomake
+
+let g:neomake_python_enabled_makers = ['pylint']
+
+call neomake#configure#automake('nrwi', 500)
