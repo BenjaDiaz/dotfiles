@@ -24,6 +24,10 @@ Plugin 'fisadev/vim-isort'
 
 Plugin 'dense-analysis/ale'
 
+Plugin 'Chiel92/vim-autoformat'
+
+Plugin 'hashivim/vim-terraform'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -69,7 +73,19 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-map <F3> :NERDTreeToggle<CR>
+noremap <F3> :NERDTreeToggle<CR>
 
 " YCM
-map gd :YcmComplete GoToDefinition<CR>
+noremap gd :YcmComplete GoToDefinition<CR>
+
+let g:ycm_language_server =
+  \ [
+  \   {
+  \     'name': 'terraform',
+  \     'cmdline': [ 'terraform-ls', 'serve' ],
+  \     'filetypes': [ 'terraform', 'tf' ]
+  \   }
+  \ ]
+
+" vim-autoformat
+noremap <C-f> :Autoformat<CR>
