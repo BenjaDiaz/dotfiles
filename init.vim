@@ -12,6 +12,8 @@ set undofile                " Save undos after file closes
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
+imap <C-L> <Esc>
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'davidhalter/jedi-vim'
@@ -48,6 +50,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'fisadev/vim-isort'
 
+Plug 'wsdjeg/FlyGrep.vim'
+
+Plug 'Asheq/close-buffers.vim'
+
 call plug#end()
 
 let mapleader = "\<Space>"
@@ -78,6 +84,8 @@ let g:neoformat_basic_format_retab = 1
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
 
+autocmd FileType python noremap <Leader>bf :Neoformat<CR>:Isort<CR>
+
 " jedi
 
 " disable autocompletion, because we use deoplete for completion
@@ -102,3 +110,16 @@ noremap <Leader>ft :NERDTreeToggle<CR>
 let g:neomake_python_enabled_makers = ['pylint']
 
 call neomake#configure#automake('nrwi', 500)
+
+" Flygrep
+
+noremap <Leader>s/ :FlyGrep<CR>
+
+" airline
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" bdelete
+
+noremap <Leader>bc :Bdelete hidden<CR>
