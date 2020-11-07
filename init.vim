@@ -14,6 +14,10 @@ set undoreload=10000        " number of lines to save for undo
 
 imap <C-L> <Esc>
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/__pycache__/*
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'davidhalter/jedi-vim'
@@ -36,7 +40,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'neomake/neomake'
 
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'machakann/vim-highlightedyank'
 
@@ -46,13 +50,14 @@ Plug 'hashivim/vim-terraform'
 
 Plug 'juliosueiras/vim-terraform-completion'
 
-Plug 'ctrlpvim/ctrlp.vim'
-
 Plug 'fisadev/vim-isort'
 
-Plug 'wsdjeg/FlyGrep.vim'
-
 Plug 'Asheq/close-buffers.vim'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
 
 call plug#end()
 
@@ -105,15 +110,13 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 noremap <Leader>ft :NERDTreeToggle<CR>
 
+let NERDTreeIgnore = ['node_modules[[dir]]','__pycache__[[dir]]']
+
 " neomake
 
 let g:neomake_python_enabled_makers = ['pylint']
 
 call neomake#configure#automake('nrwi', 500)
-
-" Flygrep
-
-noremap <Leader>s/ :FlyGrep<CR>
 
 " airline
 
@@ -123,3 +126,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " bdelete
 
 noremap <Leader>bc :Bdelete hidden<CR>
+
+" telescope
+nnoremap <Leader><Leader> <cmd>lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <Leader>ps <cmd>lua require'telescope.builtin'.live_grep{}<CR>
+
