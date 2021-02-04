@@ -40,6 +40,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 " === CoC Config ===
@@ -210,3 +212,5 @@ nnoremap <F3> :CocCommand explorer<CR>
 nnoremap <Leader>ps :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 
 nnoremap <Leader>bf :Format<CR>
+
+nnoremap <Leader>ft :FloatermNew --height=0.9 --width=0.9 --wintype=float --autoclose=2<CR>
