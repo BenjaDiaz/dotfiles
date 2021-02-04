@@ -1,0 +1,16 @@
+{
+	"tabnine.priority": 100,
+	"python.formatting.provider": "black",
+	"languageserver": {
+		"terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+			"settings": {}
+		}
+	}
+}
