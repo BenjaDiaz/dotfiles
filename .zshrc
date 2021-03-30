@@ -131,3 +131,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 source <(lab completion zsh)
 
 export MANPAGER='nvim +Man!'
+
+export LANG=en_US.UTF-8
+
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_SDK/build-tools/30.0.3/:$PATH
